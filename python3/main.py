@@ -5,7 +5,6 @@
 import requests
 import configparser
 
-
 def getHeaders( filename, key ):
 	conf = configparser.ConfigParser()
 	conf.read( filename );
