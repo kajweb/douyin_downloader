@@ -1,11 +1,20 @@
 # python3 code
 # to download douyin video without watermark
+
 # 测试URL：http://v.douyin.com/FLBYQq
 
 import requests
 import configparser
+import os
 
 def getHeaders( filename, key ):
+	conf = configparser.ConfigParser()
+	conf.read( filename );
+	confDict = dict(conf._sections);
+	headers = dict(confDict[key]);
+	return headers;
+
+def getAndroidHeaders( filename, key ):
 	conf = configparser.ConfigParser()
 	conf.read( filename );
 	confDict = dict(conf._sections);
@@ -33,17 +42,25 @@ def parse_douyin( url, headers ):
 def download_douyin( parseDouyin, headers ):
 	# 懒得创建文件夹，直接跟文件同一个目录算了 todo
 	videoBin = requests.get( parseDouyin['addr'], headers=headers );
-	filename = parseDouyin['id'] + ".mp4";
-	with open( filename, "wb") as f:
+	_filename = parseDouyin['id'] + ".mp4";
+	with open( _filename, "wb") as f:
 	        f.write(videoBin.content)
 	        f.close()
+	return _filename;
 
 headers = getHeaders( "config.ini", "headers" );
+arduinoHeaders = getHeaders( "config.ini", "arduino-headers" );
 while True:
 	url = input("请输入需要下载的视频url：");
 	# todo 判断url有效性
 	parseData = parse_douyin( url, headers);
 	print( "解析出的视频源地址为：" + parseData['addr'] );
 	# 下载视频
-	download_douyin( parseData, headers );
+	filename = download_douyin( parseData, arduinoHeaders );
 	print( "下载完成，", "下载视频Id为：",parseData['id'], "\n" );
+	print( "请求播放视频中……\n" );
+	playFlag = os.system( filename )
+	if playFlag==0:
+		print( "播放视频成功\n" );
+	else:
+		print( "播放视频失败\n" );

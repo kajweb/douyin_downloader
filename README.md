@@ -19,4 +19,11 @@
 如果你有什么问题请提 Issue
 
 ## 📃 LICENSE
+
 [MIT](https://opensource.org/licenses/mit-license.php)
+
+
+
+## 更新历史
+
+[点击这里链接到更新历史页面](update_history.md)
