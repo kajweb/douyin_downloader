@@ -1,11 +1,15 @@
 # python3 code
 # to download douyin video without watermark
 
-# 测试URL：http://v.douyin.com/FLBYQq
+# 测试URL：http://v.douyin.com/2EW6fW
 
 import requests
 import configparser
 import os
+
+# 屏蔽SSL错误（提醒）
+from requests.packages import urllib3
+urllib3.disable_warnings()
 
 def getHeaders( filename, key ):
 	conf = configparser.ConfigParser()
@@ -23,7 +27,7 @@ def getAndroidHeaders( filename, key ):
 
 def parse_douyin( url, headers ):
 	# 获得视频的源地址
-	res = requests.get(url,headers=headers);
+	res = requests.get( url, headers=headers, verify=False );
 	# todo 判断是否get成功
 	res.encoding = 'utf-8'
 	data = res.text
@@ -41,7 +45,7 @@ def parse_douyin( url, headers ):
 
 def download_douyin( parseDouyin, headers ):
 	# 懒得创建文件夹，直接跟文件同一个目录算了 todo
-	videoBin = requests.get( parseDouyin['addr'], headers=headers );
+	videoBin = requests.get( parseDouyin['addr'], headers=headers, verify=False );
 	_filename = parseDouyin['id'] + ".mp4";
 	with open( _filename, "wb") as f:
 	        f.write(videoBin.content)
