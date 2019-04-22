@@ -53,14 +53,14 @@ def download_douyin( parseDouyin, headers ):
 	return _filename;
 
 headers = getHeaders( "config.ini", "headers" );
-arduinoHeaders = getHeaders( "config.ini", "arduino-headers" );
+androidHeaders = getHeaders( "config.ini", "android-headers" );
 while True:
 	url = input("请输入需要下载的视频url：");
 	# todo 判断url有效性
 	parseData = parse_douyin( url, headers);
 	print( "解析出的视频源地址为：" + parseData['addr'] );
 	# 下载视频
-	filename = download_douyin( parseData, arduinoHeaders );
+	filename = download_douyin( parseData, androidHeaders );
 	print( "下载完成，", "下载视频Id为：",parseData['id'], "\n" );
 	print( "请求播放视频中……\n" );
 	playFlag = os.system( filename )
