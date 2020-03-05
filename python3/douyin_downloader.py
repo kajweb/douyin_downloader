@@ -69,20 +69,22 @@ def download_douyin( parseDouyin, headers ):
 	        f.close()
 	return fullName;
 
-headers = getHeaders( "config.ini", "headers" );
-androidHeaders = getHeaders( "config.ini", "android-headers" );
-while True:
-	url = input("请输入需要下载的视频url：");
-	# todo 判断url有效性
-	parseData = parse_douyin( url, androidHeaders);
-	print( "解析出的视频源地址为：" + parseData['addr'] );
-	# 下载视频
-	fullName = download_douyin( parseData, androidHeaders );
-	print( "下载完成，", "下载视频Id为：",parseData['id'], "\n" );
-	print( "请求播放视频中……\n" );
-	playFlag = os.system( fullName )
-	print( fullName )
-	if playFlag==0:
-		print( "播放视频成功\n" );
-	else:
-		print( "播放视频失败\n" );
+
+if __name__ == '__main__':
+	headers = getHeaders( "config.ini", "headers" );
+	androidHeaders = getHeaders( "config.ini", "android-headers" );
+	while True:
+		url = input("请输入需要下载的视频url：");
+		# todo 判断url有效性
+		parseData = parse_douyin( url, androidHeaders);
+		print( "解析出的视频源地址为：" + parseData['addr'] );
+		# 下载视频
+		fullName = download_douyin( parseData, androidHeaders );
+		print( "下载完成，", "下载视频Id为：",parseData['id'], "\n" );
+		print( "请求播放视频中……\n" );
+		playFlag = os.system( fullName )
+		print( fullName )
+		if playFlag==0:
+			print( "播放视频成功\n" );
+		else:
+			print( "播放视频失败\n" );
