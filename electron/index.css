@@ -1,0 +1,60 @@
+.container-fluid{
+	padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#text-url{
+    position: relative;
+    top: 2px;
+    padding: 10px 0 10px 10px;
+    background: 0 0;
+    color: #333;
+    font-family: Verdana,Tahoma,Arial;
+    font-size: 25px;
+    height: 50px;
+    line-height: 50px;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+#bt-down{
+	margin-top: 20px;
+	font-size: 25px;
+	color: #fff;
+	padding: 10px;
+	width: 100%;
+	background: green;
+	cursor: pointer;
+	border-radius: 15px;
+}
+
+#bt-down:hover{
+	background: #02dc02;
+}
+
+.alert-warning{
+	margin-top: 20px;
+	background: #ffccd5;
+	border-radius: 15px;
+	padding: 15px;
+	box-sizing: border-box;
+}
+
+#div-tips{
+	position: relative;
+	display: none;
+	transition: all 0.7s;
+}
+
+#div-tips>#div-tips-close{
+	position: absolute;
+	right: 15px;
+	top: 15px;
+	cursor: pointer;
+}
+
+#div-tips>#div-tips-close:hover{
+	color: #ccc;
+}

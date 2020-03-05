@@ -1,0 +1,2 @@
+electron-packager ./ douyin-downloader --platform=win32 --arch=x64 --out ./build --icon=douyin.ico --overwrite
+electron-packager ./ douyin-downloader --platform=win32 --arch=ia32 --out ./build --icon=douyin.ico --overwrite

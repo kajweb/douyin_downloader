@@ -1,0 +1,25 @@
+{
+  "name": "douyin-downloader",
+  "version": "1.0.0",
+  "description": "Electron application - douyin-downloader without mask.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "packager": "electron-packager  ./ douyin-downloader --platform=win32 --arch=x64 --out ./bin"
+  },
+  "repository": "https://github.com/kajweb/douyin_downloader.git",
+  "keywords": [
+    "Electron",
+    "douyin",
+    "downloader"
+  ],
+  "author": "kajweb",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^8.0.3",
+    "electron-packager": "^14.2.1"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3"
+  }
+}
